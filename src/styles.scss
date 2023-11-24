@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-dark-blue/theme.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  .date-input-container {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+
+    .clear-button-container {
+      margin-right: 10px;
+    }
+
+    .calendar-container {
+      margin-left: auto;
+    }
+  }
+
+  .table-container {
+    flex: 1;
+  }
+
+  .view-container {
+    padding: 30px;
+  }
+
+  .paginator-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .select-theme-button {
+    margin-top: 10px;
+  }
+  .th-space {
+    display: flex;
+    justify-content: space-between;
+  }
+}

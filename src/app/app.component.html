@@ -1,1 +1,84 @@
-<p>hello</p>
+<div class="container">
+  <div class="date-input-container">
+    <div class="clear-button-container">
+      <p-button
+        (click)="resetDate()"
+        label="Clear"
+        icon="pi pi-filter-slash"
+      ></p-button>
+    </div>
+
+    <div class="calendar-container">
+      <p-calendar
+        [(ngModel)]="selectedDate"
+        dateFormat="yy-mm-dd"
+        [showIcon]="true"
+        (ngModelChange)="onDateChange()"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="table-container">
+    <p-table
+      [value]="exchangeRates.slice(first, first + rows)"
+      [ngClass]="{
+        'dark-theme': selectedTheme === 'ciemny',
+        'light-theme': selectedTheme === 'jasny'
+      }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="th-text">
+            <div class="th-space">
+              <span class="th-text">Symbol waluty</span>
+              <i class="pi pi-filter" (click)="sortColumn('code')"></i>
+            </div>
+          </th>
+          <th>
+            <div class="th-space">
+              <span class="th-text">Waluta</span>
+              <i class="pi pi-filter" (click)="sortColumn('currency')"></i>
+            </div>
+          </th>
+          <th>
+            <div class="th-space">
+              <span class="th-text">Kurs waluty</span>
+              <i class="pi pi-filter" (click)="sortColumn('mid')"></i>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rate>
+        <tr>
+          <td>{{ rate.code }}</td>
+          <td>{{ rate.currency }}</td>
+          <td>{{ rate.mid }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="paginator-container">
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="totalRecords"
+      [rowsPerPageOptions]="[6, 10, 20, 30]"
+    ></p-paginator>
+  </div>
+</div>
+
+<div>
+  <div>
+    <b class="view-container">Wybierz widok</b>
+  </div>
+  <div>
+    <p-selectButton
+      class="select-theme-button"
+      [options]="stateOptions"
+      [(ngModel)]="selectedTheme"
+      optionLabel="label"
+      optionValue="value"
+    ></p-selectButton>
+  </div>
+</div>
