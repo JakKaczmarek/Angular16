@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbpService } from './nbp.service';
+import { ThemeService } from './theme-service';
+import { MessageService } from 'primeng/api';
 
 export interface ColumnSort {
   sortDirection: number;
@@ -21,14 +23,25 @@ export class AppComponent implements OnInit {
 
   selectedTheme: string = 'light';
   stateOptions: any[] = [
-    { label: 'Ciemny', value: 'ciemny' },
-    { label: 'Jasny', value: 'jasny' },
+    { label: 'Ciemny', value: 'vela-blue' },
+    { label: 'Jasny', value: 'saga-blue' },
   ];
 
-  constructor(private nbp: NbpService) {}
+  constructor(
+    private nbp: NbpService,
+    private themeService: ThemeService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.loadData();
+  }
+
+  theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
+  changeTheme(value: any) {
+    if (value.value) {
+      this.themeService.switchTheme(value.value);
+    }
   }
 
   // Metoda do pobierania danych z paginacją
@@ -38,21 +51,22 @@ export class AppComponent implements OnInit {
 
       this.nbp.getDataByDate(formattedDate).subscribe(
         (data: any) => {
-          console.warn(data);
           if (data && data[0] && data[0].rates) {
             this.exchangeRates = data[0].rates;
             this.totalRecords = this.exchangeRates.length;
           }
         },
         (error) => {
-          // Obsłuż błędy komunikacji z API
-          console.error('Błąd pobierania danych z NBP API:', error);
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Błąd',
+            detail: 'Brak danych dla wybranego dnia',
+          });
         }
       );
     } else {
       // Pobierz ogólne dane, jeśli nie wybrano daty
       this.nbp.getData().subscribe((data: any) => {
-        console.warn(data);
         if (data && data[0] && data[0].rates) {
           this.exchangeRates = data[0].rates;
           this.totalRecords = this.exchangeRates.length;

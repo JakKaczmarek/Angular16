@@ -1,7 +1,27 @@
-@import "primeng/resources/themes/lara-dark-blue/theme.css";
-@import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+  padding: 0;
+  margin: 20px;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.p-button {
+  background: white;
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.p-selectbutton .p-button.p-highlight {
+  background-color: rgb(196, 193, 193);
+  outline: none;
+}
 
 .container {
   display: flex;
@@ -43,5 +63,8 @@
   .th-space {
     display: flex;
     justify-content: space-between;
+  }
+  th {
+    width: 200px;
   }
 }

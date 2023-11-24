@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="selectedTheme">
   <div class="date-input-container">
     <div class="clear-button-container">
       <p-button
@@ -24,10 +24,11 @@
         'dark-theme': selectedTheme === 'ciemny',
         'light-theme': selectedTheme === 'jasny'
       }"
+      styleClass="p-datatable-gridlines"
     >
       <ng-template pTemplate="header">
         <tr>
-          <th class="th-text">
+          <th>
             <div class="th-space">
               <span class="th-text">Symbol waluty</span>
               <i class="pi pi-filter" (click)="sortColumn('code')"></i>
@@ -79,6 +80,9 @@
       [(ngModel)]="selectedTheme"
       optionLabel="label"
       optionValue="value"
+      (onChange)="changeTheme($event)"
+      label="Secondary"
     ></p-selectButton>
   </div>
 </div>
+<p-toast></p-toast>
