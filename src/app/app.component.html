@@ -1,4 +1,5 @@
 <div class="container" [ngClass]="selectedTheme">
+  <div *ngIf="loading" class="loader-container">Loading...</div>
   <div class="date-input-container">
     <div class="clear-button-container">
       <p-button
@@ -33,19 +34,40 @@
           <th>
             <div class="th-space">
               <span class="th-text">Symbol waluty</span>
-              <i class="pi pi-filter" (click)="sortColumn('code')"></i>
+              <p-columnFilter
+                type="text"
+                field="code"
+                display="menu"
+              ></p-columnFilter>
+              <th pSortableColumn="code" style="width: 20%">
+                <p-sortIcon field="code"></p-sortIcon>
+              </th>
             </div>
           </th>
           <th>
             <div class="th-space">
               <span class="th-text">Waluta</span>
-              <i class="pi pi-filter" (click)="sortColumn('currency')"></i>
+              <p-columnFilter
+                type="text"
+                field="currency"
+                display="menu"
+              ></p-columnFilter>
+              <th pSortableColumn="currency" style="width: 20%">
+                <p-sortIcon field="currency"></p-sortIcon>
+              </th>
             </div>
           </th>
           <th>
             <div class="th-space">
               <span class="th-text">Kurs waluty</span>
-              <i class="pi pi-filter" (click)="sortColumn('mid')"></i>
+              <p-columnFilter
+                type="text"
+                field="mid"
+                display="menu"
+              ></p-columnFilter>
+              <th pSortableColumn="mid" style="width: 20%">
+                <p-sortIcon field="mid"></p-sortIcon>
+              </th>
             </div>
           </th>
         </tr>
@@ -66,7 +88,7 @@
       [first]="first"
       [rows]="rows"
       [totalRecords]="totalRecords"
-      [rowsPerPageOptions]="[6, 10, 20, 30]"
+      [rowsPerPageOptions]="[6, 10, 20, 30, 50, 100]"
     ></p-paginator>
   </div>
 </div>

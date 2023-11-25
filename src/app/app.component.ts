@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
   rows: number = 6;
   totalRecords: number = 0;
   selectedDate: Date | undefined;
-
-  selectedTheme: string = 'light';
+  loading: boolean = false;
+  selectedTheme: string = 'saga-blue';
   stateOptions: any[] = [
     { label: 'Ciemny', value: 'vela-blue' },
     { label: 'Jasny', value: 'saga-blue' },
@@ -98,32 +98,5 @@ export class AppComponent implements OnInit {
   resetDate() {
     this.selectedDate = undefined;
     this.loadData();
-  }
-
-  sortColumn(columnName: string) {
-    if (this.exchangeRates.length > 0) {
-      const columnDirection = this.getColumnSortDirection(columnName);
-
-      this.exchangeRates.sort((a, b) => {
-        const valueA = a[columnName];
-        const valueB = b[columnName];
-
-        if (typeof valueA === 'string' && typeof valueB === 'string') {
-          return columnDirection * valueA.localeCompare(valueB);
-        } else {
-          return columnDirection * (valueA - valueB);
-        }
-      });
-    }
-  }
-
-  getColumnSortDirection(columnName: string): number {
-    if (!this.cols[columnName]) {
-      this.cols[columnName] = { sortDirection: 1 };
-    }
-
-    this.cols[columnName].sortDirection =
-      this.cols[columnName].sortDirection === 1 ? -1 : 1;
-    return this.cols[columnName].sortDirection;
   }
 }
