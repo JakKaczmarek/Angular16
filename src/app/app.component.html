@@ -5,6 +5,7 @@
         (click)="resetDate()"
         label="Clear"
         icon="pi pi-filter-slash"
+        [outlined]="true"
       ></p-button>
     </div>
 
@@ -14,6 +15,7 @@
         dateFormat="yy-mm-dd"
         [showIcon]="true"
         (ngModelChange)="onDateChange()"
+        class="custom-calendar"
       ></p-calendar>
     </div>
   </div>
@@ -69,9 +71,9 @@
   </div>
 </div>
 
-<div>
-  <div>
-    <b class="view-container">Wybierz widok</b>
+<div class="container">
+  <div class="view-container">
+    <b>Wybierz widok</b>
   </div>
   <div>
     <p-selectButton
@@ -81,7 +83,8 @@
       optionLabel="label"
       optionValue="value"
       (onChange)="changeTheme($event)"
-      label="Secondary"
+      style="color: #000"
+      styleClass="my-custom-select-button"
     ></p-selectButton>
   </div>
 </div>
