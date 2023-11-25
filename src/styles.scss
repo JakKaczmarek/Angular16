@@ -70,9 +70,17 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-  th {
-    width: 200px;
-    vertical-align: middle;
-    text-align: right;
+  .th-text {
+    margin-right: 5px;
   }
+  th {
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 20px;
+    width: 33.33%;
+  }
+}
+.icons-container {
+  display: flex;
+  align-items: center;
 }

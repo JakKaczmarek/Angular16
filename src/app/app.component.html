@@ -3,7 +3,7 @@
   <div class="date-input-container">
     <div class="clear-button-container">
       <p-button
-        (click)="resetDate()"
+        (click)="resetDate(dt1)"
         label="Clear"
         icon="pi pi-filter-slash"
         [outlined]="true"
@@ -22,6 +22,7 @@
   </div>
   <div class="table-container">
     <p-table
+      #dt1
       [value]="exchangeRates.slice(first, first + rows)"
       [ngClass]="{
         'dark-theme': selectedTheme === 'ciemny',
@@ -34,40 +35,47 @@
           <th>
             <div class="th-space">
               <span class="th-text">Symbol waluty</span>
-              <p-columnFilter
-                type="text"
-                field="code"
-                display="menu"
-              ></p-columnFilter>
-              <th pSortableColumn="code" style="width: 20%">
-                <p-sortIcon field="code"></p-sortIcon>
-              </th>
+              <div class="icons-container">
+                <p-columnFilter
+                  type="text"
+                  field="code"
+                  display="menu"
+                ></p-columnFilter>
+                <th pSortableColumn="code">
+                  <p-sortIcon field="code"></p-sortIcon>
+                </th>
+              </div>
             </div>
           </th>
           <th>
             <div class="th-space">
               <span class="th-text">Waluta</span>
-              <p-columnFilter
-                type="text"
-                field="currency"
-                display="menu"
-              ></p-columnFilter>
-              <th pSortableColumn="currency" style="width: 20%">
-                <p-sortIcon field="currency"></p-sortIcon>
-              </th>
+              <div class="icons-container">
+                <p-columnFilter
+                  type="text"
+                  field="currency"
+                  display="menu"
+                ></p-columnFilter>
+                <th pSortableColumn="currency">
+                  <p-sortIcon field="currency"></p-sortIcon>
+                </th>
+              </div>
             </div>
           </th>
+
           <th>
             <div class="th-space">
               <span class="th-text">Kurs waluty</span>
-              <p-columnFilter
-                type="text"
-                field="mid"
-                display="menu"
-              ></p-columnFilter>
-              <th pSortableColumn="mid" style="width: 20%">
-                <p-sortIcon field="mid"></p-sortIcon>
-              </th>
+              <div class="icons-container">
+                <p-columnFilter
+                  type="text"
+                  field="mid"
+                  display="menu"
+                ></p-columnFilter>
+                <th pSortableColumn="mid">
+                  <p-sortIcon field="mid"></p-sortIcon>
+                </th>
+              </div>
             </div>
           </th>
         </tr>

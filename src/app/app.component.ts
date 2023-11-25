@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NbpService } from './nbp.service';
 import { ThemeService } from './theme-service';
 import { MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 export interface ColumnSort {
   sortDirection: number;
@@ -15,7 +16,6 @@ export interface ColumnSort {
 export class AppComponent implements OnInit {
   title = 'ng-web';
   exchangeRates: any[] = [];
-  cols: { [key: string]: ColumnSort } = {};
   first: number = 0;
   rows: number = 6;
   totalRecords: number = 0;
@@ -26,11 +26,12 @@ export class AppComponent implements OnInit {
     { label: 'Ciemny', value: 'vela-blue' },
     { label: 'Jasny', value: 'saga-blue' },
   ];
+  sortClicks: { [key: string]: number } = {};
 
   constructor(
     private nbp: NbpService,
     private themeService: ThemeService,
-    private messageService: MessageService
+    private messageService: MessageService // private location: Location
   ) {}
 
   ngOnInit() {
@@ -95,8 +96,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  resetDate() {
+  resetDate(table: Table) {
     this.selectedDate = undefined;
     this.loadData();
+    this.first = 0;
+    table.clear();
   }
 }
