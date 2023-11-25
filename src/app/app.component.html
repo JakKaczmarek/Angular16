@@ -23,12 +23,18 @@
   <div class="table-container">
     <p-table
       #dt1
-      [value]="exchangeRates.slice(first, first + rows)"
+      [paginator]="true"
+      [value]="exchangeRates"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25, 50, 100, 250, 500]"
       [ngClass]="{
         'dark-theme': selectedTheme === 'ciemny',
         'light-theme': selectedTheme === 'jasny'
       }"
-      styleClass="p-datatable-gridlines"
+      styleClass="p-datatable-gridlines "
     >
       <ng-template pTemplate="header">
         <tr>
@@ -89,16 +95,16 @@
       </ng-template>
     </p-table>
   </div>
-
+  <!-- 
   <div class="paginator-container">
     <p-paginator
       (onPageChange)="onPageChange($event)"
       [first]="first"
       [rows]="rows"
       [totalRecords]="totalRecords"
-      [rowsPerPageOptions]="[6, 10, 20, 30, 50, 100]"
+      [rowsPerPageOptions]="[10, 20, 30, 50, 100]"
     ></p-paginator>
-  </div>
+  </div> -->
 </div>
 
 <div class="container">

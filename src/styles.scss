@@ -55,10 +55,12 @@ body {
     margin-bottom: 8px;
   }
 
-  .paginator-container {
+  .p-paginator {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+    background: none;
+    border: none;
   }
 
   .select-theme-button {

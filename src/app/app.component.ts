@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'ng-web';
   exchangeRates: any[] = [];
   first: number = 0;
-  rows: number = 6;
+  rows: number = 10;
   totalRecords: number = 0;
   selectedDate: Date | undefined;
   loading: boolean = false;
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   constructor(
     private nbp: NbpService,
     private themeService: ThemeService,
-    private messageService: MessageService // private location: Location
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
