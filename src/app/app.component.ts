@@ -14,15 +14,14 @@ export interface ColumnSort {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'ng-web';
-  loading: boolean = false;
-  exchangeRates: any[] = [];
-  first: number = 0;
-  rows: number = 10;
-  totalRecords: number = 0;
-  selectedDate: Date | undefined;
-  selectedTheme: string = 'saga-blue';
-  private theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
+  public loading: boolean = false;
+  private exchangeRates: any[] = [];
+  public first: number = 0;
+  public rows: number = 10;
+  public totalRecords: number = 0;
+  public selectedDate: Date | undefined;
+  public selectedTheme: string = 'saga-blue';
+  public theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
   public stateOptions: any[] = [
     { label: 'Ciemny', value: 'vela-blue' },
     { label: 'Jasny', value: 'saga-blue' },
