@@ -91,7 +91,6 @@ export class AppComponent implements OnInit {
   onDateChange() {
     if (this.selectedDate) {
       this.loadData();
-      console.log('hh');
     }
   }
 
