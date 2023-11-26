@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NbpService } from './nbp.service';
-import { ThemeService } from './theme-service';
+import { NbpService } from './services/nbp.service';
+import { ThemeService } from './services/theme-service';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
@@ -15,13 +15,14 @@ export interface ColumnSort {
 })
 export class AppComponent implements OnInit {
   title = 'ng-web';
+  loading: boolean = false;
   exchangeRates: any[] = [];
   first: number = 0;
   rows: number = 10;
   totalRecords: number = 0;
   selectedDate: Date | undefined;
-  loading: boolean = false;
   selectedTheme: string = 'saga-blue';
+  theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
   stateOptions: any[] = [
     { label: 'Ciemny', value: 'vela-blue' },
     { label: 'Jasny', value: 'saga-blue' },
@@ -38,7 +39,6 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
-  theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
   changeTheme(value: any) {
     if (value.value) {
       this.themeService.switchTheme(value.value);
