@@ -22,12 +22,11 @@ export class AppComponent implements OnInit {
   totalRecords: number = 0;
   selectedDate: Date | undefined;
   selectedTheme: string = 'saga-blue';
-  theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
-  stateOptions: any[] = [
+  private theme: 'saga-blue' | 'vela-blue' = 'saga-blue';
+  public stateOptions: any[] = [
     { label: 'Ciemny', value: 'vela-blue' },
     { label: 'Jasny', value: 'saga-blue' },
   ];
-  sortClicks: { [key: string]: number } = {};
 
   constructor(
     private nbp: NbpService,
@@ -93,6 +92,7 @@ export class AppComponent implements OnInit {
   onDateChange() {
     if (this.selectedDate) {
       this.loadData();
+      console.log('hh');
     }
   }
 
