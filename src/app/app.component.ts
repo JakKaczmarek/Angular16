@@ -15,7 +15,7 @@ export interface ColumnSort {
 })
 export class AppComponent implements OnInit {
   public loading: boolean = false;
-  private exchangeRates: any[] = [];
+  public exchangeRates: any[] = [];
   public first: number = 0;
   public rows: number = 10;
   public totalRecords: number = 0;
