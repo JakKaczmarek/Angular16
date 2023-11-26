@@ -16,6 +16,7 @@
         dateFormat="yy-mm-dd"
         [showIcon]="true"
         (ngModelChange)="onDateChange()"
+        (keyup.enter)="onEnterKeyPressed()"
         class="custom-calendar"
       ></p-calendar>
     </div>

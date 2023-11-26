@@ -95,6 +95,25 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onEnterKeyPressed() {
+    if (this.isValidDate(this.selectedDate)) {
+      this.loadData();
+    } else {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Błąd',
+        detail: 'Niepoprawny format daty. Oczekiwany format: YYYY-MM-DD',
+      });
+    }
+  }
+
+  isValidDate(date: Date | undefined): boolean {
+    if (date) {
+      return !isNaN(date.getTime());
+    }
+    return false;
+  }
+
   resetDate(table: Table) {
     this.selectedDate = undefined;
     this.loadData();
